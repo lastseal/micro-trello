@@ -51,7 +51,7 @@ class Card:
 
     def getMembers(self):
 
-         url = "https://api.trello.com/1/members"
+        url = "https://api.trello.com/1/members"
         data = []
         
         for idMember in self.data['idMembers']:
