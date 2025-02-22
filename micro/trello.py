@@ -29,10 +29,46 @@ class Card:
         return self.data['desc']
 
     def getChecklist(self):
-        return self.data['idChecklists']
+
+        url = "https://api.trello.com/1/checklists"
+        data = []
+        
+        for idChecklist in self.data['idChecklists']:
+                
+            res = requests.get(f"{url}/{idChecklist}", params={
+                "key": API_KEY,
+                "token": API_TOKEN
+            })
+    
+            if res.status_code != 200:
+                raise Exception({"status": res.status_code, "message": res.text})
+    
+            data.append( res.json() )
+    
+        logging.debug("Checklist: %s", data)
+        
+        return data
 
     def getMembers(self):
-        return self.data['idMembers']
+
+         url = "https://api.trello.com/1/members"
+        data = []
+        
+        for idMember in self.data['idMembers']:
+                
+            res = requests.get(f"{url}/{idMember}", params={
+                "key": API_KEY,
+                "token": API_TOKEN
+            })
+    
+            if res.status_code != 200:
+                raise Exception({"status": res.status_code, "message": res.text})
+    
+            data.append( res.json() )
+    
+        logging.debug("Members: %s", data)
+
+        return data
 
     def getLabels(self):
         return [x['name'] for x in self.data['labels']]
