@@ -20,6 +20,9 @@ class List:
     def __str__(self):
         return self.data
 
+    def getId(self):
+        return self.data['id']
+
     def getCards(self):
 
         res = requests.get(f"{self.url}/cards", params={
