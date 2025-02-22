@@ -91,6 +91,9 @@ class List:
     def getId(self):
         return self.data['id']
 
+    def getName(self):
+        return self.data['name']
+
     def getCards(self):
 
         res = requests.get(f"{self.url}/cards", params={
