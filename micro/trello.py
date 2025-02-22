@@ -45,7 +45,7 @@ class Card:
     
             data.append( res.json() )
     
-        logging.debug("Checklist: %s", data)
+        logging.debug("Checklist: %d", len(data))
         
         return data
 
@@ -66,7 +66,7 @@ class Card:
     
             data.append( res.json() )
     
-        logging.debug("Members: %s", data)
+        logging.debug("Members: %d", len(data))
 
         return data
 
@@ -106,7 +106,7 @@ class List:
 
         data = res.json()
 
-        logging.debug("cards: %s", data)
+        logging.debug("cards: %d", len(data))
 
         return [Card(x) for x in data]
 
@@ -130,7 +130,7 @@ class Board:
 
         data = res.json()
 
-        logging.debug("data: %s", data)
+        logging.debug("data: %d", len(data))
 
         return data
     
@@ -146,16 +146,16 @@ class Board:
 
         data = res.json()
 
-        logging.debug("lists: %s", data)
+        logging.debug("lists: %d", len(data))
 
         return [List(x) for x in data]
 
 ##
 #
 
-def get(api):
+def get(uri):
 
-    res = requests.get(f"https://api.trello.com/1/boards/{BOARD_ID}/{api}", params={
+    res = requests.get(f"https://api.trello.com/1/{uri}", params={
         "key": API_KEY,
         "token": API_TOKEN
     })
