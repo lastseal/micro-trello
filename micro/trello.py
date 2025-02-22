@@ -21,6 +21,24 @@ class Card:
 
     def getId(self):
         return self.data['id']
+
+    def getName(self):
+        return self.data['name']
+
+    def getDesc(self):
+        return self.data['desc']
+
+    def getChecklist(self):
+        return self.data['idChecklists']
+
+    def getMembers(self):
+        return self.data['idMembers']
+
+    def getLabels(self):
+        return [x['name'] for x in self.data['labels']]
+
+    def getShortUrl(self):
+        return self.data['shortUrl']
         
 ##
 #
