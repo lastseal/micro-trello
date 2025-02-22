@@ -11,6 +11,20 @@ BOARD_ID = os.getenv("TRELLO_BOARD_ID")
 ##
 #
 
+class Card:
+
+    def __init__(self, data):
+        self.data = data
+
+    def __str__(self):
+        return self.data
+
+    def getId(self):
+        return self.data['id']
+        
+##
+#
+
 class List:
 
     def __init__(self, data):
@@ -37,8 +51,7 @@ class List:
 
         logging.debug("cards: %s", data)
 
-        # return [List(x) for x in data]
-        return data
+        return [Card(x) for x in data]
 
 ##
 #
